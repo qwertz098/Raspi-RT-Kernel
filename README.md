@@ -103,3 +103,8 @@ sudo cp arch/arm64/boot/dts/broadcom/*.dtb /boot/firmware/RT/; sudo cp arch/arm6
 ```bash
 sudo reboot now
 ```
+
+## Check
+```bash
+hostnamectl
+```
