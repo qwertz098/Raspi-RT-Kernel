@@ -53,7 +53,7 @@ make bcm2711_defconfig #RPI4
 make menuconfig
 ```
 ## Configuring the Kernel
-### Edit ```.config```
+### OPTION 1: Edit ```.config```
 ```
 nano .config
 ```
@@ -66,7 +66,7 @@ CONFIG_HZ=1000
 ```
 Do not insert spaces!
 
-### Grapgical Settings (from: https://lemariva.com/blog/2021/08/raspberry-pi-rt-preempt-tutorial-for-kernel-4-14-y)
+### OPTION 2: Graphical Settings (from: https://lemariva.com/blog/2021/08/raspberry-pi-rt-preempt-tutorial-for-kernel-4-14-y)
 - CONFIG_PREEMPT_RT_FULL: Kernel Features → Preemption Model (Fully Preemptible Kernel (RT)) → Fully Preemptible Kernel (RT)
 - Set CONFIG_HZ to 1000Hz: Kernel Features → Timer frequency = 1000 Hz
 - Enable HIGH_RES_TIMERS: General setup → Timers subsystem → High Resolution Timer Support
