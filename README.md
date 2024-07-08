@@ -1,5 +1,5 @@
 # RT-Kernel
-How to compile 64-bit RT-kernel for Raspberry Pi 5 for Debian bookworm (i.e., /boot/firmware/)
+How to compile 64-bit RT-kernel for Raspberry Pi 4/5 for Debian bookworm (i.e., /boot/firmware/)
 
 ## Prepare the environment
 ```bash
@@ -52,7 +52,21 @@ make bcm2711_defconfig #RPI4
 ```bash
 make menuconfig
 ```
-## Grapgical Settings (from: https://lemariva.com/blog/2021/08/raspberry-pi-rt-preempt-tutorial-for-kernel-4-14-y)
+## Configuring the Kernel
+### Edit ```.config```
+```
+nano .config
+```
+and search for the options using CTRL+W and set
+```
+HIGH_RES_TIMERS=y
+CONFIG_PREEMPT_RT_FULL=y
+CONFIG_HZ_1000=y
+CONFIG_HZ=1000
+```
+Do not insert spaces!
+
+### Grapgical Settings (from: https://lemariva.com/blog/2021/08/raspberry-pi-rt-preempt-tutorial-for-kernel-4-14-y)
 - CONFIG_PREEMPT_RT_FULL: Kernel Features → Preemption Model (Fully Preemptible Kernel (RT)) → Fully Preemptible Kernel (RT)
 - Set CONFIG_HZ to 1000Hz: Kernel Features → Timer frequency = 1000 Hz
 - Enable HIGH_RES_TIMERS: General setup → Timers subsystem → High Resolution Timer Support
