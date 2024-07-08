@@ -87,7 +87,7 @@ sudo mkdir /boot/firmware/NTP/overlays-RT
 ```
 ## Add this to /boot/firmware/config.txt in order to preserve the standard kernel
 ```bash
-nano /boot/firmware/config.txt
+sudo nano /boot/firmware/config.txt
 ```
 
 ```bash
