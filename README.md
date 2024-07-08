@@ -87,13 +87,17 @@ sudo mkdir /boot/firmware/NTP/overlays-NTP
 ```
 ## Add this to /boot/firmware/config.txt in order to preserve the standard kernel
 ```bash
-os_prefix=NTP/
-overlay_prefix=overlays-NTP/
-kernel=/kernel_2712-NTP.img
+nano /boot/firmware/config.txt
+```
+
+```bash
+os_prefix=RT/
+overlay_prefix=overlays-RT/
+kernel=/kernel_2711-RT.img
 ```
 ## Copy the file ino the right directories
 ```bash
-sudo cp arch/arm64/boot/dts/broadcom/*.dtb /boot/firmware/NTP/; sudo cp arch/arm64/boot/dts/overlays/*.dtb* /boot/firmware/NTP/overlays-NTP/; sudo cp arch/arm64/boot/dts/overlays/README /boot/firmware/NTP/overlays-NTP/; sudo cp arch/arm64/boot/Image.gz /boot/firmware/kernel_2712-NTP.img
+sudo cp arch/arm64/boot/dts/broadcom/*.dtb /boot/firmware/RT/; sudo cp arch/arm64/boot/dts/overlays/*.dtb* /boot/firmware/RT/overlays-RT/; sudo cp arch/arm64/boot/dts/overlays/README /boot/firmware/RT/overlays-RT/; sudo cp arch/arm64/boot/Image.gz /boot/firmware/kernel_2711-RT.img
 ```
 ## Reboot to activate the kernel
 ```bash
