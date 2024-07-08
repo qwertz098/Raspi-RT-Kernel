@@ -43,37 +43,21 @@ P.S.: If resetting and updating your local (git-) environment with the last two 
 ```bash
 patch -p1 < ~/kernel/patch-6.10-rc6-rt11.patch
 ```
-## Make for Raspberry Pi 5
+## Make for Raspberry Pi 4/5
 ```bash
-make bcm2712_defconfig
+make bcm2711_defconfig #RPI4
+#make bcm2712_defconfig #RPI5
 ```
 ## Start menuconfig
 ```bash
 make menuconfig
 ```
-## Select General Setup/Preemption Model/Fully Preemptible Kernel (Real-Time)
-```bash
-## I've made the following changes specifically for my NTP server to also enable kernel PPS:
--CPU_FREQ_DEFAULT_GOV_POWERSAVE y
--CPU_FREQ_GOV_CONSERVATIVE y
--CPU_FREQ_GOV_ONDEMAND y
--CPU_FREQ_GOV_PERFORMANCE y
--CPU_FREQ_GOV_SCHEDUTIL y
--CPU_FREQ_GOV_USERSPACE y
--LEDS_TRIGGER_CPU y
--PREEMPT y
- LOCALVERSION "-v8-16k" -> "-v8-16k-NTP"
- PPS_CLIENT_GPIO m -> y
-+CPU_FREQ_DEFAULT_GOV_PERFORMANCE y
-+EFI_DISABLE_RUNTIME n
-+HZ_1000 y
-+HZ_PERIODIC y
-+NTP_PPS y
-+PREEMPT_RT y
-+RTC_INTF_DEV_UIE_EMUL y
-+VIRT_CPU_ACCOUNTING_GEN y
-```
-See also https://github.com/by/RT-Kernel/blob/main/bcm2712_defconfig_RT_NTP
+## Grapgical Settings (from: https://lemariva.com/blog/2021/08/raspberry-pi-rt-preempt-tutorial-for-kernel-4-14-y)
+- CONFIG_PREEMPT_RT_FULL: Kernel Features → Preemption Model (Fully Preemptible Kernel (RT)) → Fully Preemptible Kernel (RT)
+- Set CONFIG_HZ to 1000Hz: Kernel Features → Timer frequency = 1000 Hz
+- Enable HIGH_RES_TIMERS: General setup → Timers subsystem → High Resolution Timer Support
+After changing these options, don't forget to save the .config file (option Save) and then exit.
+
 
 ## Build the kernel using all 4 cores (and try gcc optimization level -O3, if you like)
 ```bash
